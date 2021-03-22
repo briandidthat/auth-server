@@ -20,9 +20,16 @@ class UserRepositoryTest {
     @BeforeEach
     void setUp() {
         repository.deleteAll();
+        user1 = new User("user1", "password", false);
+        user2 = new User("user2", "password2", false);
     }
 
     @Test
     void findByUsername() {
+        user1 = repository.save(user1);
+
+        User fromRepository = repository.findByUsername(user1.getUsername());
+
+        assertEquals(user1, fromRepository);
     }
 }
