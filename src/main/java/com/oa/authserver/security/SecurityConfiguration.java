@@ -25,9 +25,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+            .userDetailsService(userDetailsService())
+            .passwordEncoder(passwordEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http
+            .csrf().disable()
+            .authorizeRequests()
+            .antMatchers("/admin/**").hasAnyRole("ADMIN")
+            .anyRequest().hasAnyRole("USER").and()
+            .formLogin()
+            .defaultSuccessUrl("/home")
+            .permitAll();
     }
 }
