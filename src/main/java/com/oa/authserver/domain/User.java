@@ -50,7 +50,7 @@ public class User {
         this.password = password;
     }
 
-    public boolean getEnabled() {
+    public boolean isEnabled() {
         return enabled;
     }
 
