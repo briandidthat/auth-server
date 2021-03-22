@@ -1,5 +1,6 @@
 package com.oa.authserver.security;
 
+import com.oa.authserver.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,7 +15,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return null;
+        return new UserDetailsServiceImpl();
     }
 
     @Bean

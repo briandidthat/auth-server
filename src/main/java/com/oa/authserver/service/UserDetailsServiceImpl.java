@@ -14,7 +14,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        final User user = repository.findByUsername(s);
+        User user = repository.findByUsername(s);
         if (user == null)
             throw new UsernameNotFoundException("Invalid username or password.");
 
