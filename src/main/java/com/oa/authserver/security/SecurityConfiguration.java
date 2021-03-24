@@ -36,9 +36,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .csrf().disable()
             .authorizeRequests()
             .antMatchers("/admin/**").hasAnyRole("ADMIN")
+            .antMatchers("/dashboard/**").hasAnyRole("ADMIN")
             .anyRequest().hasAnyRole("USER").and()
             .formLogin()
-            .defaultSuccessUrl("/home")
+            .defaultSuccessUrl("/dashboard")
             .permitAll();
     }
 }
